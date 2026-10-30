@@ -1,8 +1,10 @@
 # MS Focus website
 
-Static site for www.msfocus.in (GitHub Pages).
+Plain static site (HTML, CSS, JavaScript, Bootstrap 5) for www.msfocus.in, hosted on GitHub Pages.
 
-- `build.py` generates every page from one shared header and footer. Edit the content in `build.py`, run `python3 build.py`, then commit the generated files.
-- `style.css` and `script.js` are shared by all pages.
+- Each page is a standalone `.html` file. Edit it directly.
+- `style.css` holds the colour themes and custom styles; `script.js` holds the footer year and enquiry form.
+- Bootstrap 5 and Bootstrap Icons load from the jsDelivr CDN.
+- Logos and photos live in `images/logo/`; illustrations live in `images/`.
 - `CNAME` must stay as `www.msfocus.in`.
-- The enquiry form opens the visitor's email app addressed to ceo@msfocus.in. For form submissions without an email app, connect a service such as Formspree.
+- The enquiry form opens the visitor's email app addressed to focus3to12@gmail.com. For form submissions without an email app, connect a service such as Formspree.

@@ -7,156 +7,61 @@
 <meta name="description" content="MS Focus connects schools, tutoring, workshops and software development under one vision.">
 <meta property="og:title" content="MS Focus | Education and technology">
 <meta property="og:description" content="MS Focus connects schools, tutoring, workshops and software development under one vision.">
-<meta property="og:image" content="https://www.msfocus.in/msfocuslogo.jpeg">
+<meta property="og:image" content="https://www.msfocus.in/images/logo/msfocuslogo.jpeg">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="images/logo/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="container nav" aria-label="Main">
-    <a class="brand" href="index.html"><img src="logo.png" alt="" width="56" height="44">MS<span>Focus</span></a>
-    <button class="menu-btn" id="menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">&#9776;</button>
-    <ul class="nav-links" id="nav-links"><li><a href="index.html" aria-current="page">Home</a></li><li><a href="Aboutus.html">About us</a></li><li class="has-sub"><button class="drop" aria-expanded="false" aria-haspopup="true">Institutions &#9662;</button><ul class="submenu"><li><a href="focusinstitute.html">Focus Institute</a></li><li><a href="osmaniamodelschool.html">Osmania Model School</a></li><li><a href="sublimeidealschool.html">Sublime Ideal School</a></li><li><a href="faraztutorial.html">Faraz Tutorial</a></li></ul></li><li><a href="techcompany.html">Tech</a></li><li><a href="othercources.html">Courses</a></li><li><a href="ourteachers.html">Our team</a></li><li><a href="carriers.html">Careers</a></li><li class="cta"><a href="contact.html">Contact</a></li></ul>
-  </nav>
-</header>
+<header class="sticky-top bg-white border-bottom">
+<nav class="navbar navbar-expand-lg container" aria-label="Main">
+  <a class="navbar-brand brand" href="index.html"><img src="images/logo/logo.png" alt="" width="56" height="44">MS<span>Focus</span></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation menu"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id="mainNav"><ul class="navbar-nav ms-auto align-items-lg-center"><li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li><li class="nav-item"><a class="nav-link" href="Aboutus.html">About us</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Institutions</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="focusinstitute.html">Focus Institute</a></li><li><a class="dropdown-item" href="osmaniamodelschool.html">Osmania Model School</a></li><li><a class="dropdown-item" href="sublimeidealschool.html">Sublime Ideal School</a></li><li><a class="dropdown-item" href="faraztutorial.html">Faraz Tutorial</a></li></ul></li><li class="nav-item"><a class="nav-link" href="techcompany.html">Tech</a></li><li class="nav-item"><a class="nav-link" href="othercources.html">Courses</a></li><li class="nav-item"><a class="nav-link" href="ourteachers.html">Our team</a></li><li class="nav-item"><a class="nav-link" href="carriers.html">Careers</a></li><li class="nav-item ms-lg-2"><a class="btn btn-brand" href="contact.html">Contact</a></li></ul></div>
+</nav></header>
 <main id="main">
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <h1>Learn well. Build things. Enjoy it.</h1>
-      <p class="lead">From our base in Malakpet, Hyderabad, MS Focus brings sound classroom teaching together with hands-on STEM, robotics and programming for students from Class 1 to Intermediate.</p>
-      <div class="btn-row">
-        <a class="btn" href="#institutions">See our institutions</a>
-        <a class="btn ghost" href="contact.html">Contact us</a>
-      </div>
-    </div>
-    <div class="hero-logo"><img src="msfocuslogo.jpeg" alt="MS Focus logo: a graduation cap on the letter M with a small robot" width="900" height="600"></div>
-  </div>
-</section>
-
-<section class="circles"><div class="container"><ul class="circle-row"><li><a class="circle" href="focusinstitute.html"><span class="disc" style="background:linear-gradient(135deg,#c8102e,#ffc61a)"><img src="logo.png" alt="" class="contain" width="120" height="120"></span><span class="cname">Focus Institute</span></a></li><li><a class="circle" href="osmaniamodelschool.html"><span class="disc" style="background:linear-gradient(135deg,#0b3d24,#1fa356)"><span class="ini" style="color:#fff;background:linear-gradient(135deg,#0b3d24,#1fa356)">OM</span></span><span class="cname">Osmania Model School</span></a></li><li><a class="circle" href="sublimeidealschool.html"><span class="disc" style="background:linear-gradient(135deg,#0a2a66,#2b7be4)"><img src="sublimelogo.jpeg" alt="" class="cover" width="120" height="120"></span><span class="cname">Sublime Ideal School</span></a></li><li><a class="circle" href="faraztutorial.html"><span class="disc" style="background:linear-gradient(135deg,#ffc61a,#c8102e)"><span class="ini" style="color:#fff;background:linear-gradient(135deg,#ffc61a,#c8102e)">FT</span></span><span class="cname">Faraz Tutorial</span></a></li></ul></div></section>
-
-<section id="institutions">
-  <div class="container">
-    <div class="section-head">
-      <h2>Our institutions</h2>
-      <p class="lead">Four places of learning, one shared approach: clear teaching, real practice and a welcoming classroom.</p>
-    </div>
-    <div class="rows"><div class="row">
-      <div class="mark" style="background:#fde8ea;color:#c8102e">FI</div>
-      <div><h3><a href="focusinstitute.html">Focus Institute</a></h3><p>Tuition for Classes 1 to 10 and Intermediate, with practicals and STEM.</p></div>
-      <a class="btn outline" href="focusinstitute.html">View</a>
-    </div><div class="row">
-      <div class="mark" style="background:#e3f5ea;color:#12803f">OM</div>
-      <div><h3><a href="osmaniamodelschool.html">Osmania Model School</a></h3><p>A school where students build strong basics with caring teachers.</p></div>
-      <a class="btn outline" href="osmaniamodelschool.html">View</a>
-    </div><div class="row">
-      <div class="mark"><img src="sublimelogo.jpeg" alt="Sublime Ideal School logo" loading="lazy"></div>
-      <div><h3><a href="sublimeidealschool.html">Sublime Ideal School</a></h3><p>A school preparing confident students for the future.</p></div>
-      <a class="btn outline" href="sublimeidealschool.html">View</a>
-    </div><div class="row">
-      <div class="mark" style="background:#fff1bd;color:#c8102e">FT</div>
-      <div><h3><a href="faraztutorial.html">Faraz Tutorial</a></h3><p>Tutoring founded in 1992 by Ms. Ayesha Mehreen.</p></div>
-      <a class="btn outline" href="faraztutorial.html">View</a>
-    </div></div>
-  </div>
-</section>
-
-<section class="mv">
-  <div class="container grid-2">
-    <div><h2>Our mission</h2>
-      <p>To give every student a strong grounding in their subjects and the confidence to use what they know, through clear teaching, hands-on practice and modern technology, in a classroom where learning is also fun.</p></div>
-    <div><h2>Our vision</h2>
-      <p>To grow a family of schools and learning centres where children from every background learn to think, build and lead, and where technology such as robotics and AI is part of everyday education.</p></div>
-  </div>
-  <div class="container values">
-    <p><strong>Clear teaching.</strong> Concepts explained step by step until they make sense.</p>
-    <p><strong>Learning by doing.</strong> Practicals, projects and workshops, not only notes.</p>
-    <p><strong>Care for every child.</strong> Teachers who know their students.</p>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="container">
-    <div class="section-head"><h2>Learning by doing</h2><p class="lead">Smart classrooms, robotics, science labs and coding, so students build and test what they learn.</p></div>
-    <div class="grid-2 gallery">
-      <figure><img src="images/classroom-smartboard.svg" alt="Students raising their hands in a classroom with a smartboard" loading="lazy"><figcaption>Smart classrooms</figcaption></figure>
-      <figure><img src="images/robotics-lab.svg" alt="Students working with a robot in a robotics lab" loading="lazy"><figcaption>Robotics lab</figcaption></figure>
-      <figure><img src="images/science-lab.svg" alt="Students in goggles doing a science experiment" loading="lazy"><figcaption>Science practicals</figcaption></figure>
-      <figure><img src="images/coding-kids.svg" alt="Students coding on laptops" loading="lazy"><figcaption>Coding and AI</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container split">
-    <div>
-      <h2>Technology that students can touch</h2>
-      <p class="lead">Workshops on robotics, AI, programming and science practicals take the subject out of the textbook.</p>
-      <ul class="ticks">
-        <li>Hands-on robotics and AI workshops for schools</li>
-        <li>Programming and science practical sessions</li>
-        <li>Website and software development for institutions and businesses</li>
-      </ul>
-      <a class="btn" href="techcompany.html">What we build and teach</a>
-    </div>
-    <div class="panel">
-      <h3>Led by Mr. Mirza Mohammed Baig</h3>
-      <p>Known as Mohd Sir, he is the founder and CEO of MS Focus and the guiding force behind Focus Institute, Osmania Model School and Sublime Ideal School. He is an engineer and data scientist.</p>
-      <a href="Aboutus.html">Read about the leadership</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container split top">
-    <div>
-      <h2>Partnership with Legacy International School</h2>
-      <p class="lead">MS Focus works in partnership with Legacy International School.</p>
-    </div>
-    <div class="panel">
-      <h3>Talk to us</h3>
-      <p>Parents, schools and businesses can reach the team directly.</p>
-      <p><a href="mailto:focus3to12@gmail.com">focus3to12@gmail.com</a><br><a href="tel:+919182723243">+91 91827 23243</a></p>
-    </div>
-  </div>
-</section>
-<section class="alt"><div class="container"><div class="section-head"><h2>What parents and students say</h2></div><div class="btn-row"><a class="btn" href="https://maps.app.goo.gl/J7Fwi3zBtUcybsMx7" target="_blank" rel="noopener">Read and write Google reviews</a></div></div></section>
-<section class="alt"><div class="container"><div class="section-head"><h2>Follow us</h2></div>
-<div class="grid-2"><div class="panel"><h3>YouTube channels</h3><ul class="ticks"><li><a href="https://www.youtube.com/@focuswallah" target="_blank" rel="noopener">Focus Wallah</a></li></ul></div><div class="panel"><h3>Instagram pages</h3><ul class="ticks"><li><a href="https://www.instagram.com/focus_institute_hyd/" target="_blank" rel="noopener">focus_institute_hyd</a></li></ul></div></div></div></section>
+<section class="hero"><div class="container"><div class="row g-5 align-items-center">
+<div class="col-lg-7"><h1>Learn well. Build things. Enjoy it.</h1><p class="lead">From our base in Malakpet, Hyderabad, MS Focus brings sound classroom teaching together with hands-on STEM, robotics and programming for students from Class 1 to Intermediate.</p>
+<div class="d-flex flex-wrap gap-2"><a class="btn btn-accent" href="#institutions">See our institutions</a><a class="btn btn-ghost" href="contact.html">Contact us</a></div></div>
+<div class="col-lg-5"><div class="hero-logo"><img class="img-fluid" src="images/logo/msfocuslogo.jpeg" alt="MS Focus logo: a graduation cap on the letter M with a small robot" width="900" height="600"></div></div></div></div></section>
+<section class="circles"><div class="container"><ul class="circle-row"><li><a class="circle" href="focusinstitute.html"><span class="disc" style="background:linear-gradient(135deg,#c8102e,#ffc61a)"><img src="images/logo/logo.png" alt="" class="contain" width="120" height="120"></span><span class="cname">Focus Institute</span></a></li><li><a class="circle" href="osmaniamodelschool.html"><span class="disc" style="background:linear-gradient(135deg,#0b3d24,#1fa356)"><span class="ini" style="color:#0b3d24">OM</span></span><span class="cname">Osmania Model School</span></a></li><li><a class="circle" href="sublimeidealschool.html"><span class="disc" style="background:linear-gradient(135deg,#0a2a66,#2b7be4)"><img src="images/logo/sublimelogo.jpeg" alt="" class="cover" width="120" height="120"></span><span class="cname">Sublime Ideal School</span></a></li><li><a class="circle" href="faraztutorial.html"><span class="disc" style="background:linear-gradient(135deg,#ffc61a,#c8102e)"><span class="ini" style="color:#c8102e">FT</span></span><span class="cname">Faraz Tutorial</span></a></li></ul></div></section>
+<section class="section" id="institutions"><div class="container"><h2>Our institutions</h2><p class="lead mb-4">Four places of learning, one shared approach: clear teaching, real practice and a welcoming classroom.</p><div class="rows"><div class="inst-row row align-items-center g-3"><div class="col-auto"><div class="mark" style="background:#fde8ea;color:#c8102e">FI</div></div><div class="col"><h3 class="mb-1"><a href="focusinstitute.html">Focus Institute</a></h3><p class="mb-0 text-muted">Tuition for Classes 1 to 10 and Intermediate, with practicals and STEM.</p></div><div class="col-12 col-md-auto"><a class="btn btn-outline-brand" href="focusinstitute.html">View</a></div></div><div class="inst-row row align-items-center g-3"><div class="col-auto"><div class="mark" style="background:#e3f5ea;color:#12803f">OM</div></div><div class="col"><h3 class="mb-1"><a href="osmaniamodelschool.html">Osmania Model School</a></h3><p class="mb-0 text-muted">A school where students build strong basics with caring teachers.</p></div><div class="col-12 col-md-auto"><a class="btn btn-outline-brand" href="osmaniamodelschool.html">View</a></div></div><div class="inst-row row align-items-center g-3"><div class="col-auto"><div class="mark" style=""><img src="images/logo/sublimelogo.jpeg" alt="Sublime Ideal School logo" loading="lazy"></div></div><div class="col"><h3 class="mb-1"><a href="sublimeidealschool.html">Sublime Ideal School</a></h3><p class="mb-0 text-muted">A school preparing confident students for the future.</p></div><div class="col-12 col-md-auto"><a class="btn btn-outline-brand" href="sublimeidealschool.html">View</a></div></div><div class="inst-row row align-items-center g-3"><div class="col-auto"><div class="mark" style="background:#fff1bd;color:#c8102e">FT</div></div><div class="col"><h3 class="mb-1"><a href="faraztutorial.html">Faraz Tutorial</a></h3><p class="mb-0 text-muted">Tutoring founded in 1992 by Ms. Ayesha Mehreen.</p></div><div class="col-12 col-md-auto"><a class="btn btn-outline-brand" href="faraztutorial.html">View</a></div></div></div></div></section>
+<section class="mv section"><div class="container"><div class="row g-4">
+<div class="col-md-6"><h2>Our mission</h2><p>To give every student a strong grounding in their subjects and the confidence to use what they know, through clear teaching, hands-on practice and modern technology, in a classroom where learning is also fun.</p></div>
+<div class="col-md-6"><h2>Our vision</h2><p>To grow a family of schools and learning centres where children from every background learn to think, build and lead, and where technology such as robotics and AI is part of everyday education.</p></div></div>
+<div class="row g-4 values mt-3 pt-4"><div class="col-md-4"><strong>Clear teaching.</strong> Concepts explained step by step until they make sense.</div><div class="col-md-4"><strong>Learning by doing.</strong> Practicals, projects and workshops, not only notes.</div><div class="col-md-4"><strong>Care for every child.</strong> Teachers who know their students.</div></div></div></section>
+<section class="section section-alt"><div class="container"><h2>Learning by doing</h2><p class="lead mb-4">Smart classrooms, robotics, science labs and coding, so students build and test what they learn.</p><div class="row g-4">
+<div class="col-6"><figure class="gallery"><img class="img-fluid" src="images/classroom-smartboard.svg" alt="Students raising their hands in a classroom with a smartboard" loading="lazy"><figcaption>Smart classrooms</figcaption></figure></div><div class="col-6"><figure class="gallery"><img class="img-fluid" src="images/robotics-lab.svg" alt="Students working with a robot in a robotics lab" loading="lazy"><figcaption>Robotics lab</figcaption></figure></div><div class="col-6"><figure class="gallery"><img class="img-fluid" src="images/science-lab.svg" alt="Students in goggles doing a science experiment" loading="lazy"><figcaption>Science practicals</figcaption></figure></div><div class="col-6"><figure class="gallery"><img class="img-fluid" src="images/coding-kids.svg" alt="Students coding on laptops" loading="lazy"><figcaption>Coding and AI</figcaption></figure></div></div></div></section>
+<section class="section"><div class="container"><div class="row g-5"><div class="col-lg-6"><h2>Technology that students can touch</h2><p class="lead">Workshops on robotics, AI, programming and science practicals take the subject out of the textbook.</p>
+<ul class="ticks"><li>Hands-on robotics and AI workshops for schools</li><li>Programming and science practical sessions</li><li>Website and software development for institutions and businesses</li></ul><a class="btn btn-brand" href="techcompany.html">What we build and teach</a></div>
+<div class="col-lg-6"><div class="card"><div class="card-body"><h3>Led by Mr. Mirza Mohammed Baig</h3><p>Known as Mohd Sir, he is the founder and CEO of MS Focus and the guiding force behind Focus Institute, Osmania Model School and Sublime Ideal School. He is an engineer and data scientist.</p><a href="Aboutus.html">Read about the leadership</a></div></div></div></div></div></section>
+<section class="section"><div class="container"><div class="row g-5"><div class="col-lg-6"><h2>Partnership with Legacy International School</h2><p class="lead">MS Focus works in partnership with Legacy International School.</p></div>
+<div class="col-lg-6"><div class="card"><div class="card-body"><h3>Talk to us</h3><p>Parents, schools and businesses can reach the team directly.</p><p class="mb-0"><a href="mailto:focus3to12@gmail.com">focus3to12@gmail.com</a><br><a href="tel:+919182723243">+91 91827 23243</a></p></div></div></div></div></div></section>
+<section class="section section-alt"><div class="container"><h2 class="mb-3">What parents and students say</h2><a class="btn btn-brand" href="https://maps.app.goo.gl/J7Fwi3zBtUcybsMx7" target="_blank" rel="noopener">Read and write Google reviews</a></div></section><section class="section"><div class="container"><h2 class="mb-2">Find us</h2><p class="lead">Malakpet, Hyderabad</p><div class="ratio ratio-16x9 map-wrap"><iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.6240637013852!2d78.5021337!3d17.3818136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99644f788645%3A0xda0216db8ea5a4ce!2sFocus%20Institute!5e0!3m2!1sen!2ssa!4v1793375564112!5m2!1sen!2ssa" title="Focus Institute on Google Maps" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><a class="btn btn-outline-brand mt-3" href="https://maps.app.goo.gl/J7Fwi3zBtUcybsMx7" target="_blank" rel="noopener">Open in Google Maps</a></div></section><section class="section section-alt"><div class="container"><h2 class="mb-4">Follow us</h2><div class="row g-4">
+<div class="col-md-6"><div class="card h-100"><div class="card-body"><h3><i class="bi bi-youtube me-2 text-danger"></i>YouTube</h3><p>Lessons, workshops and school life on Focus Wallah.</p><a class="btn btn-outline-brand" href="https://www.youtube.com/@focuswallah" target="_blank" rel="noopener">Visit Focus Wallah</a></div></div></div>
+<div class="col-md-6"><div class="card h-100"><div class="card-body"><h3><i class="bi bi-instagram me-2" style="color:#d62976"></i>Instagram</h3><p>Updates and photos from Focus Institute.</p><a class="btn btn-outline-brand" href="https://www.instagram.com/focus_institute_hyd/" target="_blank" rel="noopener">@focus_institute_hyd</a></div></div></div></div></div></section>
 </main>
-<footer class="site-footer">
-  <div class="container">
-    <div class="foot-grid">
-      <div>
-        <h3>MS Focus</h3>
-        <p>Schools, tutoring, workshops and software from Malakpet, Hyderabad.</p>
-      </div>
-      <div><h3>Institutions</h3><ul><li><a href="focusinstitute.html">Focus Institute</a></li><li><a href="osmaniamodelschool.html">Osmania Model School</a></li><li><a href="sublimeidealschool.html">Sublime Ideal School</a></li><li><a href="faraztutorial.html">Faraz Tutorial</a></li></ul></div>
-      <div><h3>Explore</h3><ul>
-        <li><a href="Aboutus.html">About us</a></li>
-        <li><a href="techcompany.html">Tech</a></li>
-        <li><a href="othercources.html">Courses</a></li>
-        <li><a href="ourteachers.html">Our team</a></li>
-        <li><a href="carriers.html">Careers</a></li>
-      </ul></div>
-      <div><h3>Contact</h3><ul>
-        <li><a href="mailto:focus3to12@gmail.com">focus3to12@gmail.com</a></li>
-        <li><a href="tel:+919182723243">+91 91827 23243</a></li>
-        <li><a href="https://wa.me/919182723243">Message on WhatsApp</a></li>
-        <li><a href="https://www.youtube.com/@focuswallah" target="_blank" rel="noopener">YouTube: Focus Wallah</a></li>
-        <li><a href="https://www.instagram.com/focus_institute_hyd/" target="_blank" rel="noopener">Instagram: focus_institute_hyd</a></li>
-      </ul></div>
-    </div>
-    <p class="copy">&copy; <span class="year">2026</span> MS Focus. All rights reserved.</p>
-  </div>
-</footer>
-<a class="wa-float" href="https://wa.me/919182723243?text=Hello%20MS%20Focus" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" fill="#fff"><path d="M16 3C9.4 3 4 8.3 4 14.9c0 2.3.7 4.5 1.9 6.4L4 28l6.9-1.8c1.8 1 3.100 1.500 5.100 1.500 6.600 0 12-5.300 12-11.900S22.600 3 16 3zm0 21.800c-1.800 0-3.500-.5-5-1.400l-.4-.2-4 1 1.100-3.900-.3-.4a9.700 9.700 0 0 1-1.500-5.100C5.900 9.500 10.400 5 16 5s10.100 4.500 10.100 9.900S21.600 24.800 16 24.800zm5.500-7.300c-.3-.1-1.800-.9-2.100-1s-.5-.1-.7.100-.8 1-1 1.200-.4.200-.7.100a8.100 8.100 0 0 1-4-3.500c-.3-.5.300-.5.900-1.600.1-.2.100-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.400 1 2.800 1.200 3 2 3.100 4.900 4.300c1.800.8 2.500.8 3.400.7.5-.1 1.800-.7 2-1.400s.2-1.300.2-1.400-.3-.2-.6-.3z"/></svg></a>
+<footer class="site-footer pt-5 pb-3">
+<div class="container"><div class="row g-4">
+  <div class="col-lg-4"><h3>MS Focus</h3><p>Schools, tutoring, workshops and software from Malakpet, Hyderabad.</p>
+    <div class="d-flex gap-2"><a class="social" href="https://www.youtube.com/@focuswallah" target="_blank" rel="noopener" aria-label="YouTube: Focus Wallah"><i class="bi bi-youtube"></i></a><a class="social" href="https://www.instagram.com/focus_institute_hyd/" target="_blank" rel="noopener" aria-label="Instagram: focus_institute_hyd"><i class="bi bi-instagram"></i></a><a class="social" href="https://wa.me/919182723243" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></div></div>
+  <div class="col-6 col-lg-2"><h3>Institutions</h3><ul class="list-unstyled"><li><a href="focusinstitute.html">Focus Institute</a></li><li><a href="osmaniamodelschool.html">Osmania Model School</a></li><li><a href="sublimeidealschool.html">Sublime Ideal School</a></li><li><a href="faraztutorial.html">Faraz Tutorial</a></li></ul></div>
+  <div class="col-6 col-lg-2"><h3>Explore</h3><ul class="list-unstyled"><li><a href="Aboutus.html">About us</a></li><li><a href="techcompany.html">Tech</a></li><li><a href="othercources.html">Courses</a></li><li><a href="ourteachers.html">Our team</a></li><li><a href="carriers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div class="col-lg-4"><h3>Contact</h3><ul class="list-unstyled">
+    <li><a href="mailto:focus3to12@gmail.com">focus3to12@gmail.com</a></li>
+    <li><a href="tel:+919182723243">+91 91827 23243</a></li>
+    <li><a href="https://wa.me/919182723243">Message on WhatsApp</a></li>
+    <li><a href="https://www.youtube.com/@focuswallah" target="_blank" rel="noopener">YouTube: Focus Wallah</a></li>
+    <li><a href="https://www.instagram.com/focus_institute_hyd/" target="_blank" rel="noopener">Instagram: focus_institute_hyd</a></li></ul></div>
+</div><p class="copy mt-4 pt-3 mb-0">&copy; <span class="year">2026</span> MS Focus. All rights reserved.</p></div></footer>
+<a class="wa-float" href="https://wa.me/919182723243?text=Hello%20MS%20Focus" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
