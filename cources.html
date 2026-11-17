@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>MS Focus – Learn, Quiz, Get Certified</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f7fb;--card:#fff;--tx:#14182b;--mu:#667;--pr:#4f46e5;--pr2:#7c3aed;--ok:#16a34a;--bd:#e3e6f0;--warn:#d97706}
+:root:not([data-theme="light"]){color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1220;--card:#181c30;--tx:#eef0fa;--mu:#9aa1c0;--bd:#2a2f4a;--pr:#818cf8;--pr2:#a78bfa}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1220;--card:#181c30;--tx:#eef0fa;--mu:#9aa1c0;--bd:#2a2f4a;--pr:#818cf8;--pr2:#a78bfa}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px;padding:12px 20px}
+.logo{font-weight:800;font-size:20px;cursor:pointer;background:linear-gradient(90deg,var(--pr),var(--pr2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header .sp{flex:1}
+main{max-width:1100px;margin:0 auto;padding:20px}
+.btn{background:linear-gradient(90deg,var(--pr),var(--pr2));color:#fff;border:0;border-radius:10px;padding:10px 18px;font:600 15px inherit;font-family:inherit;cursor:pointer}
+.btn.sec{background:transparent;color:var(--tx);border:1px solid var(--bd)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.hero{padding:36px 0 20px}.hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px;line-height:1.15}.hero p{color:var(--mu);max-width:620px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px}
+.card h3{margin:8px 0 4px}.card p{color:var(--mu);margin:0 0 12px;font-size:14px}
+.em{font-size:36px}.tag{display:inline-block;font-size:12px;padding:2px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--bd);color:var(--mu);margin-right:4px}
+.bar{height:8px;background:var(--bg);border:1px solid var(--bd);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pr),var(--pr2));transition:width .4s}
+.lay{display:grid;grid-template-columns:1fr 300px;gap:16px}
+@media(max-width:820px){.lay{grid-template-columns:1fr}}
+.vw{position:relative;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden}.vw iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.step{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:transparent;border:1px solid var(--bd);color:var(--tx);border-radius:10px;padding:10px 12px;margin-top:8px;font:inherit;cursor:pointer}
+.step.on{border-color:var(--pr);background:var(--bg)}.step[disabled]{opacity:.5;cursor:not-allowed}
+.step b{width:24px;height:24px;border-radius:50%;background:var(--bd);display:grid;place-items:center;font-size:12px;flex:none}.step.done b{background:var(--ok);color:#fff}
+.mu{color:var(--mu);font-size:14px}.hid{display:none!important}
+.modal{position:fixed;inset:0;background:#0009;display:grid;place-items:center;z-index:20;padding:16px}
+.modal .card{width:min(420px,100%)}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+input[type=text],input[type=email],input[type=url],textarea{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+.q{margin:16px 0;padding-bottom:12px;border-bottom:1px solid var(--bd)}.q label{font-weight:400;display:flex;gap:8px;margin:6px 0;cursor:pointer}
+.q.ok{border-left:4px solid var(--ok);padding-left:10px}.q.bad{border-left:4px solid #dc2626;padding-left:10px}
+canvas{width:100%;height:auto;border-radius:10px;border:1px solid var(--bd)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+@media print{header,.lay>aside,.row,.hero,.noprint{display:none!important}}
+</style>
+</head>
+<body>
+<header><span class="logo" onclick="go('home')">MS Focus</span><span class="mu">msfocus.in</span><span class="sp"></span><span id="who" class="mu"></span><button class="btn sec" onclick="go('home')">My Learning</button></header>
+<main id="app"></main>
+<div id="modal"></div>
+
+<script>
+/* ---------- CONFIG: add more courses here (type: 'playlist' or 'video') ---------- */
+const COURSES=[{
+ id:'python',emoji:'🐍',title:'Python Programming',level:'Beginner',type:'playlist',ref:'PLu0W_9lII9agwh1XjRt242xIpHhPT2llg',
+ desc:'Learn Python from scratch with a full video playlist, a quiz and a hands-on project.',
+ project:{title:'Build a Python mini-project',brief:'Create a small Python program (e.g. calculator, to-do CLI, quiz game or contact book). Upload it to GitHub and paste the link below.'},
+ quiz:[
+  ['Which function prints output in Python?',['echo()','print()','console.log()','write()'],1],
+  ['Which is a valid variable name?',['2value','my-var','my_var','class'],2],
+  ['What is the type of 3.14?',['int','float','str','double'],1],
+  ['Which data type is immutable?',['list','dict','set','tuple'],3],
+  ['How do you start a function definition?',['function f():','def f():','fun f():','define f():'],1],
+  ['What does len([1,2,3]) return?',['2','3','4','Error'],1],
+  ['Which keyword handles exceptions?',['catch','rescue','except','handle'],2],
+  ['Which symbol starts a comment?',['//','#','/*','--'],1],
+  ['What is the output of 7 // 2?',['3.5','3','4','2'],1],
+  ['Which loop iterates over a sequence?',['for','repeat','loop','foreach'],0]]
+}];
+/* ---------- BACKEND HOOK: replace with real API calls later ---------- */
+const API={base:'',async call(path,body){/* TODO: fetch(this.base+path,{method:'POST',body:JSON.stringify(body)}) */return null}};
+
+/* ---------- STATE ---------- */
+let db={student:null,enr:{}};
+try{db=JSON.parse(localStorage.getItem('msf_v1'))||db}catch(e){}
+const save=()=>{try{localStorage.setItem('msf_v1',JSON.stringify(db))}catch(e){}};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const course=id=>COURSES.find(c=>c.id===id);
+let cur=null,tab='vid',live={};
+
+/* ---------- PROGRESS TRACKING ---------- */
+// A video is split into 5-second buckets; a bucket counts only when actually played (skipping ahead does not count).
+function vFrac(p){if(!p||!p.d)return 0;return Math.min(1,p.b.length/(Math.ceil(p.d/5)*.9))}
+function stats(e){
+ if(e.manual)return{total:e.total||0,done:e.total||0,pct:100,complete:true};
+ const total=e.total||0;let sum=0,done=0;
+ Object.values(e.prog).forEach(p=>{const f=vFrac(p);sum+=f;if(f>=1)done++});
+ return{total,done,pct:total?Math.min(100,Math.round(sum/total*100)):0,complete:total>0&&done>=total}
+}
+function onInfo(i){
+ if(!i||!cur)return;const c=course(cur),e=db.enr[cur];
+ if(c.type==='video')e.total=1;
+ else if(i.playlist&&i.playlist.length&&e.total!==i.playlist.length){e.total=i.playlist.length;save()}
+ if(i.videoData&&i.videoData.video_id)live.vid=i.videoData.video_id;
+ if(i.playerState!==undefined)live.st=i.playerState;
+ if(i.duration)live.d=i.duration;
+ if(i.currentTime!==undefined)live.t=i.currentTime;
+ if(live.st===1&&live.vid&&live.d>0){
+  const p=e.prog[live.vid]||(e.prog[live.vid]={b:[],d:live.d});p.d=live.d;
+  const k=Math.floor(live.t/5);
+  if(!p.b.includes(k)){p.b.push(k);save();paint()}
+ }
+}
+addEventListener('message',ev=>{
+ try{if(!/(^|\.)youtube(-nocookie)?\.com$/.test(new URL(ev.origin).hostname))return;
+ const d=JSON.parse(ev.data);live.got=1;if(d.event==='infoDelivery'||d.event==='initialDelivery')onInfo(d.info)}catch(x){}
+});
+function handshake(){
+ const f=$('yt');if(!f)return;let n=0;live={};
+ const t=setInterval(()=>{if(live.got||++n>20||!$('yt')){clearInterval(t);if(!live.got&&$('yterr'))$('yterr').classList.remove('hid');return}
+  try{f.contentWindow.postMessage(JSON.stringify({event:'listening',id:1,channel:'widget'}),'*');
+  f.contentWindow.postMessage(JSON.stringify({event:'command',func:'addEventListener',args:['onStateChange'],id:1,channel:'widget'}),'*')}catch(x){}},800);
+}
+
+/* ---------- VIEWS ---------- */
+function go(v,id){cur=id||null;tab='vid';v==='home'?home():courseView()}
+function home(){
+ $('who').textContent=db.student?'👤 '+db.student.name:'';
+ $('app').innerHTML=`<section class="hero"><h1>Learn. Take the quiz. Get certified.</h1><p>Watch the course videos, complete the quiz and project, and earn your MS Focus certificate.</p></section>
+ <div class="grid">${COURSES.map(c=>{const e=db.enr[c.id],s=e&&stats(e);return`<div class="card"><div class="em">${c.emoji}</div><h3>${c.title}</h3>
+ <span class="tag">${c.level}</span><span class="tag">Quiz</span><span class="tag">Project</span><span class="tag">Certificate</span>
+ <p style="margin-top:10px">${c.desc}</p>
+ ${e?`<div class="bar"><i style="width:${s.pct}%"></i></div><p class="mu" style="margin:6px 0 12px">${s.pct}% complete${e.certId?' · 🎓 Certified':''}</p><button class="btn" onclick="go('course','${c.id}')">Continue</button>`
+ :`<button class="btn" onclick="register('${c.id}')">Register Free</button>`}</div>`}).join('')}</div>`;
+}
+function register(id){
+ if(db.student){enroll(id,db.student.name,db.student.email);return}
+ $('modal').innerHTML=`<div class="modal"><div class="card"><h3 style="margin-top:0">Register for ${course(id).title}</h3>
+ <label>Full name (printed on certificate)</label><input type="text" id="nm" placeholder="Your full name" autocomplete="name">
+ <label>Email</label><input type="email" id="em" placeholder="you@example.com" autocomplete="email">
+ <p id="er" class="mu" style="color:#dc2626"></p>
+ <div class="row"><button class="btn" onclick="doReg('${id}')">Start Learning</button><button class="btn sec" onclick="$('modal').innerHTML=''">Cancel</button></div></div></div>`;
+ $('nm').focus();
+}
+function doReg(id){
+ const n=$('nm').value.trim(),m=$('em').value.trim();
+ if(n.length<3){$('er').textContent='Please enter your full name.';return}
+ if(!/^\S+@\S+\.\S+$/.test(m)){$('er').textContent='Please enter a valid email.';return}
+ db.student={name:n,email:m};enroll(id,n,m);
+}
+function enroll(id,n,m){
+ if(!db.enr[id]){db.enr[id]={at:Date.now(),prog:{},total:course(id).type==='video'?1:0,quiz:null,project:null,certId:null,date:null};API.call('/register',{name:n,email:m,course:id})}
+ save();$('modal').innerHTML='';go('course',id);
+}
+function courseView(){
+ const c=course(cur);$('who').textContent='👤 '+db.student.name;
+ const src=c.type==='playlist'?`videoseries?list=${c.ref}`:c.ref;
+ const localFile=location.protocol==='file:';
+ const playerUrl=`https://www.youtube.com/embed/${src}${src.includes('?')?'&':'?'}enablejsapi=1&rel=0${/^https?:/.test(location.origin)?'&origin='+encodeURIComponent(location.origin):''}&playsinline=1`;
+ const playerMarkup=localFile
+  ? `<div class="vw" style="display:grid;place-items:center;padding:24px;background:#111;color:#fff;text-align:center"><div><div style="font-size:22px;font-weight:700;margin-bottom:8px">YouTube player needs a website address</div><p style="color:#ddd;margin:0 0 16px">This page is opened as a local file (file://). YouTube blocks embedded playback without a valid website referrer. Host this page on HTTPS to enable video tracking, or watch the playlist directly and use manual completion.</p><a class="btn" style="display:inline-block;text-decoration:none" href="https://www.youtube.com/playlist?list=${c.ref}" target="_blank" rel="noopener noreferrer">Watch playlist on YouTube</a><br><button class="btn sec" style="margin-top:12px;color:#fff;border-color:#777" onclick="manualDone()">I finished all videos on YouTube</button></div></div>`
+  : `<div class="vw"><iframe id="yt" src="${playerUrl}" referrerpolicy="origin" allow="accelerometer;autoplay;encrypted-media;picture-in-picture;fullscreen" allowfullscreen onload="handshake()"></iframe></div>`;
+ $('app').innerHTML=`<h2 style="margin:0 0 12px">${c.emoji} ${c.title}</h2><div class="lay"><div>
+ <section id="s-vid">${playerMarkup}
+ <p class="mu">${localFile?'Video tracking works when this course is hosted on an HTTPS website.':'Progress is tracked as you watch. Skipping ahead doesn’t count — watch each video to at least 90%.'}</p><p id="yterr" class="hid mu" style="color:var(--warn)">⚠ No playback data received. Check that this page is hosted over HTTPS, your browser allows YouTube embeds, and the playlist allows embedding. <a href="https://www.youtube.com/playlist?list=${c.ref}" target="_blank" rel="noopener noreferrer">Open playlist on YouTube</a><br><button class="btn sec" style="margin-top:8px" onclick="manualDone()">I finished all videos on YouTube (manual mode)</button></p></section>
+ <section id="s-quiz" class="hid card"></section><section id="s-proj" class="hid card"></section><section id="s-cert" class="hid card"></section></div>
+ <aside><div class="card"><b>Your progress</b><div class="bar" style="margin:10px 0 6px"><i id="pb"></i></div><div class="mu" id="pt"></div><div id="steps"></div>
+ <button class="btn sec hid" id="dev" style="margin-top:10px;width:100%" onclick="devDone()">Dev: mark videos complete</button></div></aside></div>`;
+ if(location.hash==='#dev')$('dev').classList.remove('hid');
+ paint();show('vid');
+}
+function devDone(){const e=db.enr[cur];e.total=e.total||5;for(let i=0;i<e.total;i++)e.prog['dev'+i]={b:Array.from({length:60},(_,k)=>k),d:300};save();paint()}
+function manualDone(){if(!confirm('Confirm that you watched every video in this course?'))return;db.enr[cur].manual=true;save();paint();show('quiz')}
+function paint(){
+ if(!$('pb'))return;const e=db.enr[cur],s=stats(e);
+ $('pb').style.width=s.pct+'%';
+ $('pt').textContent=s.total?`${s.pct}% · ${s.done} of ${s.total} videos completed`:'Press play to start tracking';
+ const qOk=e.quiz&&e.quiz.pass,pOk=!!e.project;
+ const st=[['vid','Watch videos',s.complete,true],['quiz','Take the quiz',qOk,s.complete],['proj','Submit project',pOk,qOk],['cert','Get certificate',!!e.certId,qOk&&pOk]];
+ $('steps').innerHTML=st.map((x,i)=>`<button class="step ${tab===x[0]?'on':''} ${x[2]?'done':''}" ${x[3]?'':'disabled'} onclick="show('${x[0]}')"><b>${x[2]?'✓':x[3]?i+1:'🔒'}</b>${x[1]}</button>`).join('');
+}
+function show(t){
+ tab=t;['vid','quiz','proj','cert'].forEach(k=>$('s-'+k).classList.toggle('hid',k!==t));
+ if(t==='quiz')quizView();if(t==='proj')projView();if(t==='cert')certView();paint();
+}
+/* ---------- QUIZ ---------- */
+function quizView(){
+ const c=course(cur),e=db.enr[cur];
+ $('s-quiz').innerHTML=`<h3 style="margin-top:0">${c.title} – Quiz</h3><p class="mu">${c.quiz.length} questions · 70% to pass${e.quiz?` · Last score: ${e.quiz.score}%`:''}</p>
+ ${c.quiz.map((q,i)=>`<div class="q" id="q${i}"><b>${i+1}. ${esc(q[0])}</b>${q[1].map((o,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${esc(o)}</label>`).join('')}</div>`).join('')}
+ <div id="qr"></div><button class="btn" onclick="gradeQuiz()">Submit quiz</button>`;
+}
+function gradeQuiz(){
+ const c=course(cur),e=db.enr[cur];let ok=0;
+ c.quiz.forEach((q,i)=>{const s=document.querySelector(`input[name=q${i}]:checked`);const good=s&&+s.value===q[2];if(good)ok++;$('q'+i).className='q '+(good?'ok':'bad')});
+ const score=Math.round(ok/c.quiz.length*100),pass=score>=70;
+ e.quiz={score,pass:pass||(e.quiz&&e.quiz.pass)};save();API.call('/quiz',{course:cur,score});
+ $('qr').innerHTML=`<p><b>${pass?'🎉 Passed':'Not yet'} – ${score}% (${ok}/${c.quiz.length})</b>${pass?'':' · Review the highlighted answers and retry.'}</p>`;
+ paint();if(pass)$('qr').innerHTML+=`<button class="btn" onclick="show('proj')">Next: Project →</button> `;
+}
+/* ---------- PROJECT ---------- */
+function projView(){
+ const c=course(cur),e=db.enr[cur],p=e.project;
+ $('s-proj').innerHTML=`<h3 style="margin-top:0">${esc(c.project.title)}</h3><p>${esc(c.project.brief)}</p>
+ <label>Project link (GitHub / Drive / live URL)</label><input type="url" id="pu" placeholder="https://github.com/you/project" value="${p?esc(p.url):''}">
+ <label>What did you build? (2–3 lines)</label><textarea id="pn" rows="3">${p?esc(p.note):''}</textarea>
+ <p id="pe" class="mu" style="color:#dc2626"></p><button class="btn" onclick="saveProj()">${p?'Update':'Submit'} project</button>`;
+}
+function saveProj(){
+ const u=$('pu').value.trim(),n=$('pn').value.trim();
+ if(!/^https?:\/\/\S+\.\S+/.test(u)||n.length<10){$('pe').textContent='Add a valid link and a short description (10+ characters).';return}
+ db.enr[cur].project={url:u,note:n,at:Date.now()};save();API.call('/project',{course:cur,url:u,note:n});show('cert');
+}
+/* ---------- CERTIFICATE ---------- */
+function certId(){const s=db.student.email+cur;let h=0;for(const ch of s)h=(h*31+ch.charCodeAt(0))>>>0;return'MSF-'+cur.slice(0,3).toUpperCase()+'-'+h.toString(36).toUpperCase().padStart(6,'0')}
+function certView(){
+ const e=db.enr[cur],c=course(cur);
+ if(!e.certId){e.certId=certId();e.date=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});save();API.call('/certificate',{course:cur,id:e.certId});paint()}
+ $('s-cert').innerHTML=`<h3 style="margin-top:0">🎓 Congratulations, ${esc(db.student.name)}!</h3><canvas id="cv" width="1400" height="990"></canvas>
+ <div class="row"><button class="btn" onclick="dl()">Download PNG</button><button class="btn sec" onclick="print()">Print / Save PDF</button></div>
+ <p class="mu">If download doesn’t start, long-press / right-click the certificate and save the image.</p>`;
+ draw($('cv'),c,e);
+}
+function draw(cv,c,e){
+ const x=cv.getContext('2d'),W=1400,H=990,cx=W/2;
+ x.fillStyle='#fffdf7';x.fillRect(0,0,W,H);
+ x.strokeStyle='#4f46e5';x.lineWidth=14;x.strokeRect(30,30,W-60,H-60);x.strokeStyle='#c9a227';x.lineWidth=3;x.strokeRect(58,58,W-116,H-116);
+ x.textAlign='center';x.fillStyle='#4f46e5';x.font='bold 40px Georgia,serif';x.fillText('MS FOCUS',cx,150);
+ x.fillStyle='#14182b';x.font='bold 74px Georgia,serif';x.fillText('Certificate of Completion',cx,265);
+ x.font='italic 30px Georgia,serif';x.fillStyle='#555';x.fillText('This is proudly presented to',cx,355);
+ x.fillStyle='#4f46e5';let fs=88;x.font=`bold ${fs}px Georgia,serif`;while(x.measureText(db.student.name).width>1050){fs-=4;x.font=`bold ${fs}px Georgia,serif`}
+ x.fillText(db.student.name,cx,480);x.strokeStyle='#c9a227';x.lineWidth=2;x.beginPath();x.moveTo(300,510);x.lineTo(1100,510);x.stroke();
+ x.fillStyle='#555';x.font='italic 30px Georgia,serif';x.fillText('for successfully completing the course',cx,580);
+ x.fillStyle='#14182b';x.font='bold 56px Georgia,serif';x.fillText(c.title,cx,660);
+ x.fillStyle='#555';x.font='26px Georgia,serif';x.fillText(`Videos completed · Quiz score ${e.quiz.score}% · Project submitted`,cx,720);
+ x.textAlign='left';x.font='24px Georgia,serif';x.fillText('Date: '+e.date,120,880);x.textAlign='right';x.fillText('Certificate ID: '+e.certId,W-120,880);
+ x.textAlign='center';x.fillStyle='#4f46e5';x.font='22px Georgia,serif';x.fillText('Verify at msfocus.in',cx,880);
+}
+function dl(){const a=document.createElement('a');a.href=$('cv').toDataURL('image/png');a.download='MSFocus-Certificate.png';a.click()}
+
+go('home');
+</script>
+</body>
+</html>
